@@ -1,0 +1,29 @@
+---
+# tasks file for php
+- name: Install PHP-FPM
+  apt:
+    name: php8.1-fpm
+    state: latest
+
+- name: Start php-fpm and Enable it on the every boot
+  service:
+    name: php8.1-fpm
+    state: started
+    enabled: yes
+
+- name: create document root directory
+  file:
+    path: '{{ document_root_path }}'
+    state: directory
+
+- name: add page
+  copy:
+    src: index.php
+    dest: '{{ document_root_path }}'
+
+- name: generate config
+  copy:
+    src: pul1.conf
+    dest: /etc/php/8.1/fpm/pool.d
+  notify:
+  - Restart php-fpm

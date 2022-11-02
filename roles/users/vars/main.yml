@@ -1,0 +1,3 @@
+---
+# vars file for users
+public_ssh_key_path: /home/ekaterina/.ssh/id_rsa.pub

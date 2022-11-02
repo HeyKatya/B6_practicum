@@ -1,0 +1,4 @@
+---
+# vars file for http
+host_for_php: 158.160.35.63
+document_root_path: /home/www
