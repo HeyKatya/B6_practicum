@@ -4,6 +4,7 @@
   apt:
     name: php8.1-fpm
     state: latest
+    update_cache: yes
 
 - name: Start php-fpm and Enable it on the every boot
   service:

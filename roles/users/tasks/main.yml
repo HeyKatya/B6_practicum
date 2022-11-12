@@ -2,11 +2,12 @@
 # tasks file for users
 - name: create new user
   user:
-    name: user1
+    name: "{{ user_name }}"
     generate_ssh_key: yes
+    password: "{{ test_user_password | password_hash('sha512') }}"
 
 - name: Set authorized key taken from file
   authorized_key:
-    user: user1
+    user: "{{ user_name }}"
     state: present
     key: "{{ lookup('file', '{{ public_ssh_key_path }}') }}"
